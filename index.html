@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOYON CASHMERE — Premium Mongolian Cashmere</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- PRINT SECTION (hidden on screen) -->
+<div id="print-section">
+  <div class="print-header">
+    <div class="print-brand">NOYON CASHMERE</div>
+    <div class="print-sub">PREMIUM MONGOLIAN CASHMERE · ULAANBAATAR</div>
+    <div class="print-title" id="print-form-title">Catalog Selection Form</div>
+  </div>
+  <div class="print-customer-grid">
+    <div class="print-field">
+      <div class="print-label" id="pl-name">CUSTOMER NAME</div>
+      <div class="print-value" id="pv-name"></div>
+    </div>
+    <div class="print-field">
+      <div class="print-label" id="pl-date">DATE</div>
+      <div class="print-value" id="pv-date"></div>
+    </div>
+    <div class="print-field">
+      <div class="print-label" id="pl-phone">PHONE NUMBER</div>
+      <div class="print-value" id="pv-phone"></div>
+    </div>
+    <div class="print-field">
+      <div class="print-label" id="pl-email">EMAIL ADDRESS</div>
+      <div class="print-value" id="pv-email"></div>
+    </div>
+  </div>
+  <div class="print-section-label" id="pl-products">SELECTED PRODUCTS</div>
+  <table class="print-table">
+    <thead>
+      <tr>
+        <th id="pth-code">CODE</th>
+        <th id="pth-name">PRODUCT NAME</th>
+        <th id="pth-color">COLOR</th>
+        <th id="pth-size">SIZE</th>
+        <th id="pth-material">MATERIAL</th>
+        <th id="pth-price" style="text-align:right">UNIT PRICE</th>
+      </tr>
+    </thead>
+    <tbody id="print-tbody"></tbody>
+    <tfoot>
+      <tr class="print-total-row">
+        <td colspan="5" id="pth-total" style="text-align:right;font-weight:700;letter-spacing:1px">TOTAL</td>
+        <td style="text-align:right;font-weight:700" id="print-total-amount"></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="print-sig-grid">
+    <div class="print-sig-block">
+      <div class="print-sig-title" id="ps-cust">CUSTOMER SIGNATURE</div>
+      <div class="print-sig-line"></div>
+      <div class="print-sig-sub" id="ps-sig">Signature:</div>
+      <div class="print-sig-line" style="margin-top:24px"></div>
+      <div class="print-sig-sub" id="ps-name">Name:</div>
+      <div class="print-sig-line" style="margin-top:24px"></div>
+      <div class="print-sig-sub" id="ps-date2">Date:</div>
+    </div>
+    <div class="print-sig-block">
+      <div class="print-sig-title" id="ps-comp">COMPANY REPRESENTATIVE</div>
+      <div class="print-sig-line"></div>
+      <div class="print-sig-sub" id="ps-sig2">Signature:</div>
+      <div class="print-sig-line" style="margin-top:24px"></div>
+      <div class="print-sig-sub" id="ps-name2">Name:</div>
+      <div class="print-sig-line" style="margin-top:24px"></div>
+      <div class="print-sig-sub" id="ps-date3">Date:</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div class="no-print" id="app">
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="header-top">
+      <div class="header-left">
+        <button class="icon-btn" id="dark-toggle" title="Toggle dark mode">
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="lang-btn" id="lang-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="lang-label">MN</span>
+        </button>
+      </div>
+
+      <div class="header-center">
+        <div class="brand-name" id="brand-name">NOYON CASHMERE</div>
+        <div class="brand-tagline" id="brand-tagline">PREMIUM MONGOLIAN CASHMERE</div>
+      </div>
+
+      <div class="header-right">
+        <button class="compare-btn header-btn" id="compare-open-btn" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+          <span id="t-compare">Compare</span> <span id="compare-count">(0)</span>
+        </button>
+        <button class="wishlist-btn header-btn" id="wishlist-open-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span id="t-wishlist">Wishlist</span>
+          <span class="wl-badge" id="wl-badge" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <div class="filter-row">
+        <div class="year-pills">
+          <button class="pill active" data-year="all" id="t-year-all">All</button>
+          <button class="pill" data-year="2024">2024</button>
+          <button class="pill" data-year="2025">2025</button>
+          <button class="pill" data-year="2026">2026</button>
+        </div>
+        <div class="divider-v"></div>
+        <div class="cat-pills">
+          <button class="pill active" data-cat="all" id="t-cat-all">All</button>
+          <button class="pill" data-cat="men" id="t-cat-men">Men</button>
+          <button class="pill" data-cat="women" id="t-cat-women">Women</button>
+          <button class="pill" data-cat="accessories" id="t-cat-acc">Accessories</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="search-wrap">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" id="search-input" placeholder="Search by name, code, color, size, material..." />
+          <button class="search-clear" id="search-clear" style="display:none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <button class="filter-toggle-btn" id="price-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          <span id="t-price-range">Price Range</span>
+        </button>
+      </div>
+
+      <div class="price-filter-row" id="price-filter-row" style="display:none">
+        <span class="price-label" id="t-price-label">PRICE RANGE</span>
+        <div class="range-group">
+          <input type="range" class="range-slider" id="price-min" min="0" max="2000000" step="5000" value="0" />
+          <span class="range-val" id="price-min-val">0₮</span>
+          <span class="range-sep">—</span>
+          <input type="range" class="range-slider" id="price-max" min="0" max="2000000" step="5000" value="2000000" />
+          <span class="range-val" id="price-max-val">2,000,000₮</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main-content">
+    <main id="main-content">
+
+<div class="swiper mySwiper">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+            <img src="images/banner4.png">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="images/banner5.png">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="images/banner6.png">
+        </div>
+
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <div class="swiper-pagination"></div>
+
+</div>
+    <div class="product-count-bar">
+      <span class="count-label" id="count-label">0 ITEMS</span>
+      <span class="count-query" id="count-query"></span>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+      <!-- cards injected by JS -->
+    </div>
+
+    <div class="no-results" id="no-results" style="display:none">
+      <p id="t-no-results">No products found</p>
+    </div>
+
+    <!-- Recently Viewed -->
+    <div class="recently-viewed" id="recently-viewed" style="display:none">
+      <div class="section-label" id="t-recently">RECENTLY VIEWED</div>
+      <div class="recent-strip" id="recent-strip"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="footer-year"></span> NOYON CASHMERE · ULAANBAATAR, MONGOLIA</p>
+  </footer>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="product-modal">
+      <button class="modal-close" id="modal-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-body">
+        <!-- Left: images -->
+        <div class="modal-gallery">
+          <div class="zoom-container" id="zoom-container">
+            <img class="zoom-img" id="modal-main-img" src="" alt="" />
+          </div>
+          <p class="zoom-hint" id="t-zoom-hint">Move cursor to zoom</p>
+          <div class="thumb-row" id="thumb-row"></div>
+        </div>
+        <!-- Right: info -->
+        <div class="modal-info">
+          <p class="modal-code" id="modal-code"></p>
+          <h2 class="modal-name" id="modal-name"></h2>
+          <p class="modal-price" id="modal-price"></p>
+
+          <div class="modal-meta">
+            <div class="meta-row">
+              <span class="meta-label" id="t-material-label">MATERIAL</span>
+              <span class="meta-val" id="modal-material"></span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label" id="t-season-label">SEASON</span>
+              <span class="meta-val" id="modal-season"></span>
+            </div>
+          </div>
+
+          <div class="selector-block">
+            <p class="selector-label" id="modal-color-label">SELECT COLOR</p>
+            <div class="option-pills" id="color-options"></div>
+          </div>
+
+          <div class="selector-block">
+            <p class="selector-label" id="t-select-size">SELECT SIZE</p>
+            <div class="option-pills" id="size-options"></div>
+          </div>
+
+          <p class="modal-notice" id="modal-notice"></p>
+
+          <button class="add-wishlist-btn" id="add-wishlist-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span id="t-add-wishlist">Add to Wishlist</span>
+          </button>
+
+          <!-- Related -->
+          <div class="related-section" id="related-section" style="display:none">
+            <p class="related-label" id="t-related">RELATED PRODUCTS</p>
+            <div class="related-grid" id="related-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WISHLIST PANEL -->
+  <div class="panel-overlay" id="wl-overlay"></div>
+  <div class="side-panel" id="wishlist-panel">
+    <div class="panel-header">
+      <div class="panel-title-row">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="panel-title" id="t-wl-title">Wishlist</span>
+        <span class="panel-count" id="wl-panel-count"></span>
+      </div>
+      <button class="panel-close" id="wl-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="customer-info">
+      <p class="customer-info-label">CUSTOMER INFORMATION</p>
+      <input type="text" class="cust-input" id="cust-name" placeholder="Customer Name" />
+      <input type="tel" class="cust-input" id="cust-phone" placeholder="Phone Number" />
+      <input type="email" class="cust-input" id="cust-email" placeholder="Email Address" />
+    </div>
+
+    <div class="panel-items" id="wl-items">
+      <div class="empty-wl" id="wl-empty">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.25"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <p id="t-no-items">No items in wishlist</p>
+      </div>
+    </div>
+
+    <div class="panel-footer" id="wl-footer" style="display:none">
+      <div class="panel-total">
+        <span class="panel-total-label" id="wl-item-count">0 ITEMS</span>
+        <span class="panel-total-amt" id="wl-total">0₮</span>
+      </div>
+      <button class="print-btn" id="print-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span id="t-print">Print A4 / Export PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- COMPARE PANEL -->
+  <div class="compare-panel-overlay" id="compare-overlay"></div>
+  <div class="compare-panel" id="compare-panel">
+    <div class="compare-panel-header">
+      <h2 class="compare-panel-title" id="t-compare-title">Product Comparison</h2>
+      <button class="panel-close" id="compare-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="compare-scroll">
+      <table class="compare-table" id="compare-table"></table>
+    </div>
+  </div>
+
+</div><!-- /#app -->
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="swiper.js"></script>
+</body>
+</html>
